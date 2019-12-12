@@ -29,4 +29,19 @@ class TodosController extends Controller
     	$todo->delete();
     	return redirect()->back();
     }
+
+    public function update($id) {
+    	$todo = Todo::find($id);
+    	
+    	return view('update')->with('todos', $todo);
+    }
+
+    public function save(Request $req, $id){
+    	$todo = Todo::find($id);
+    	$todo->todo = $req->todo;
+    	$todo->save();
+
+    	return redirect()->route('todos');
+
+    }
 }

@@ -14,7 +14,9 @@
     <div class="row"> 
         <div class="col-lg-12">
             @foreach($todos as $todo)
-                {{ $todo->todo }} <a href="{{ route('todo.delete', ['id' => $todo->id]) }}" class="btn btn-danger"> x </a>
+                {{ $todo->todo }} 
+                <a href="{{ route('todo.delete', ['id' => $todo->id]) }}" class="btn btn-danger"> delete </a>
+                <a href="{{ route('todo.update', ['id' => $todo->id]) }}" class="btn btn-warning"> update </a>
                 <hr/>
             @endforeach
         </div>
