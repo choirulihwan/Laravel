@@ -8,7 +8,8 @@ class PagesController extends Controller
 {
     //
 	function new(){
-		//return view('new');	
-		echo "Bismillah";
+		
+		return view('new');	
+		
 	}
 }
