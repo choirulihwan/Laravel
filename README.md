@@ -1,6 +1,7 @@
 # Laravel
 Repository for laravel applications:
 #1 Todos Application
+#2 Blog Application
 # catatan
 # menjalankan make:auth di laravel 6
 # composer require laravel/ui
