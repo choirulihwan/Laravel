@@ -3,6 +3,12 @@
 
 @section('content')
 
+		@if(Session::has('success'))
+            <div class="alert alert-success" role="alert-success">
+                {{ Session::get('success') }}
+            </div>
+        @endif
+
 	<div class="card">
 		<div class="card-body">
 			<table class="table table-hover">
