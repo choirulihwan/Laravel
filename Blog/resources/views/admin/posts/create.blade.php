@@ -28,9 +28,18 @@
 				</div>
 
 				<div class="form-group">					
-					<label for="featured">Featured Image</label>
-					<input type="file" class="form-control" name="featured">
+					<label for="featured">Category</label>
+					<select name="category_id" id="category_id" class="form-control">
+						@foreach($categories as $category)
+							<option value="{{ $category->id }}">{{ $category->name }}</option>
+						@endforeach
+					</select>
 				</div>	
+
+				<div class="form-group">					
+					<label for="category">Featured Image</label>
+					<input type="file" class="form-control" name="featured">
+				</div>
 
 				<div class="form-group">					
 					<label for="content">Content</label>

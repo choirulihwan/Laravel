@@ -95,6 +95,13 @@
                     @endif
                     
                     <div class="col-lg-8">
+                        
+                        @if(Session::has('info'))
+                            <div class="alert alert-success" role="alert-success">
+                                {{ Session::get('info') }}
+                            </div>
+                        @endif
+                        
                         @yield('content')
                     </div>
                     
