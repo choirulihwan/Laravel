@@ -16,3 +16,9 @@ Repository for laravel applications:
 #        //
 #        Schema::defaultStringLength(191);
 #    }
+
+# error: 
+# Call to undefined function App\Http\Controllers\str_slug()
+# solusi: 
+# composer require laravel/helpers
+# Illuminate\Support\Str (dicontroller)

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Category;
 use App\Post;
 
@@ -17,6 +18,7 @@ class PostController extends Controller
     public function index()
     {
         //
+        return view('admin.posts.index')->with('posts', Post::all());   
     }
 
     /**
@@ -58,15 +60,16 @@ class PostController extends Controller
         $featured->move('uploads/posts', $featured_new_name);
 
         $post = Post::create([
-            'title' => $request->title,
-            'content' => $request->content,
-            'featured' => 'uploads/posts/'.$request->featured_new_name,
-            'category_id' => $request->category_id
+            'title'         => $request->title,
+            'content'       => $request->content,
+            'featured'      => 'uploads/posts/'.$featured_new_name,
+            'category_id'   => $request->category_id,
+            'slug'          => str_slug($request->title)
         ]);
 
         Session::flash('success', 'Post created successfully');
 
-
+        return redirect()->back();
     }
 
     /**
