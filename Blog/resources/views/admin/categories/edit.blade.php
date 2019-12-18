@@ -4,12 +4,10 @@
 
 	@include('admin.includes.errors')
 
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			<h2 class="text-center">Edit category: {{ $category->name }}</h2>	
-		</div>
+	<div class="card">
+		<div class="card-header">Edit category: {{ $category->name }}</div>
 
-		<div class="panel-body">
+		<div class="card-body">
 			<form action="{{ route('category.update', ['id' => $category->id]) }}" method="post">
 
 				{{ csrf_field() }}

@@ -99,6 +99,9 @@ class PostController extends Controller
     public function edit($id)
     {
         //
+        $categories = Category::all();
+        $post = Post::find($id);
+        return view('admin.posts.edit')->with('categories', $categories)->with('post', $post);
     }
 
     /**
@@ -111,6 +114,29 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request, [
+            'title'     => 'required|max:255',            
+            'content'   => 'required',
+            'category_id'   => 'required'
+        ]);
+
+        $post = Post::find($id);
+
+        if($request->hasFile('featured')){
+            $featured = $request->featured;
+            $featured_new_name = time() . $featured->getClientOriginalName();
+            $featured->move('uploads/posts', $featured_new_name);
+            $post->featured = 'uploads/posts/'.$featured_new_name;
+        }
+
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->category_id = $request->category_id;
+
+        $post->save();
+
+        Session::flash('success', 'Post updated successfully');
+        return redirect()->back();
     }
 
     /**

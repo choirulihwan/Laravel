@@ -4,12 +4,10 @@
 
 	@include('admin.includes.errors')
 
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			<h2 class="text-center">Create new category</h2>	
-		</div>
+	<div class="card">
+		<div class="card-header">Create new category</div>
 
-		<div class="panel-body">
+		<div class="card-body">
 			<form action="{{ route('category.store') }}" method="post">
 
 				{{ csrf_field() }}
