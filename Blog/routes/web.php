@@ -50,6 +50,22 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 		'as'	=> 'post.delete'
 	]);
 
+	Route::get('/post/trashed', [
+		'uses'	=> 'PostController@trashed',
+		'as'	=> 'post.trashed'
+	]);
+
+	Route::get('/post/kill/{id}', [
+		'uses'	=> 'PostController@kill',
+		'as'	=> 'post.kill'
+	]);
+
+	Route::get('/post/restore/{id}', [
+		'uses'	=> 'PostController@edit',
+		'as'	=> 'post.restore'
+	]);
+
+
 	Route::get('/categories', [
 		'uses'	=> 'CategoriesController@index',
 		'as'	=> 'categories'

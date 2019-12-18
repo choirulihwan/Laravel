@@ -17,8 +17,8 @@
 					<tr>
 						<th>Image</th>
 						<th>Title</th>
-						<th>Edit</th>
-						<th>Trash</th>
+						<th>Restore</th>
+						<th>Destroy</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -27,13 +27,13 @@
 						<td><img src="{{ $post->featured }}" alt="{{ $post->title }}" width="90px" height="50px" /></td>
 						<td>{{ $post-> title }}</td>
 						<td>
-							<a class="btn btn-xs btn-info" href="{{ route('post.edit', ['id' => $post->id]) }}">
-								Edit
+							<a class="btn btn-xs btn-info" href="{{ route('post.restore', ['id' => $post->id]) }}">
+								Restore
 							</a>
 						</td>
 						<td>
-							<a class="btn btn-xs btn-danger" href="{{ route('post.delete', ['id' => $post->id]) }}">
-								Trash
+							<a class="btn btn-xs btn-danger" href="{{ route('post.kill', ['id' => $post->id]) }}">
+								Delete Permanently
 							</a>
 						</td>
 					</tr>

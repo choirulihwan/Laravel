@@ -21,6 +21,13 @@ class PostController extends Controller
         return view('admin.posts.index')->with('posts', Post::all());   
     }
 
+    public function trashed()
+    {
+        //
+        $posts = Post::onlyTrashed()->get();
+        return view('admin.posts.trashed')->with('posts', $posts);   
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -119,6 +126,18 @@ class PostController extends Controller
         $post->delete();
 
         Session::flash('success', 'Post deleted successfully');
+
+        return redirect()->back();
+
+    }
+
+    public function kill($id)
+    {
+        //
+        $post = Post::withTrashed()->where('id', $id);
+        $post->forceDelete();
+
+        Session::flash('success', 'Post deleted permanently');
 
         return redirect()->back();
 
