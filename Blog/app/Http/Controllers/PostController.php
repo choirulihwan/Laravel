@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Category;
 use App\Post;
+use App\Tag;
 
 class PostController extends Controller
 {
@@ -41,7 +42,10 @@ class PostController extends Controller
             Session::flash('info', 'You must have some categories first');
             return redirect()->back();
         }
-        return view('admin.posts.create')->with('categories', $categories);
+
+        $tags = Tag::all();
+        return view('admin.posts.create')->with('categories', $categories)
+                                         ->with('tags', $tags);
     }
 
     /**
@@ -53,12 +57,14 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
+        //dd($request->all());
         
         $this->validate($request, [
             'title'     => 'required|max:255',
             'featured'  => 'required|image',
             'content'   => 'required',
-            'category_id'   => 'required'
+            'category_id'   => 'required',
+            'tags'      => 'required'
         ]);
 
         //dd($request->all());
@@ -73,6 +79,9 @@ class PostController extends Controller
             'category_id'   => $request->category_id,
             'slug'          => str_slug($request->title)
         ]);
+
+        //insert array of tags
+        $post->tags()->attach($request->tags);
 
         Session::flash('success', 'Post created successfully');
 

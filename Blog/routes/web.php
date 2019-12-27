@@ -21,7 +21,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 
 	Route::get('/test', function(){
 		//return App\Category::find(1)->posts;
-		return App\Post::find(1)->category;
+		//return App\Post::find(1)->category;
+		return App\Tag::find(2)->posts;
 	});
 
 	Route::get('/home', [
