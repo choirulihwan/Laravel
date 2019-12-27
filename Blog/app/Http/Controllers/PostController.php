@@ -109,8 +109,12 @@ class PostController extends Controller
     {
         //
         $categories = Category::all();
+        $tags = Tag::all();
         $post = Post::find($id);
-        return view('admin.posts.edit')->with('categories', $categories)->with('post', $post);
+
+        return view('admin.posts.edit')->with('categories', $categories)
+                                        ->with('tags', $tags)
+                                        ->with('post', $post);
     }
 
     /**
@@ -143,6 +147,8 @@ class PostController extends Controller
         $post->category_id = $request->category_id;
 
         $post->save();
+
+        $post->tags()->sync($request->tags);
 
         Session::flash('success', 'Post updated successfully');
         return redirect()->back();
