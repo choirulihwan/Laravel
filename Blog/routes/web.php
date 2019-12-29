@@ -169,6 +169,16 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 		'as'	=> 'user.edit'
 	]);
 
+	Route::get('/user/profile', [
+		'uses'	=> 'ProfilesController@index',
+		'as'	=> 'user.profile'
+	]);
+
+	Route::post('/user/profile/update', [
+		'uses'	=> 'ProfilesController@update',
+		'as'	=> 'user.profile.update'
+	]);
+
 	Route::post('/user/update/{id}', [
 		'uses'	=> 'UsersController@update',
 		'as'	=> 'user.update'

@@ -100,6 +100,8 @@
                                 <li class="list-group-item"><a href="{{ route('posts') }}">List posts</a></li>
                                 <li class="list-group-item"><a href="{{ route('post.trashed') }}">Trashed posts</a></li>
                                 <li class="list-group-item"><a href="{{ route('post.create') }}">Create new post</a></li>
+
+                                <li class="list-group-item"><a href="{{ route('user.profile') }}">My profile</a></li>
                             </ul>
                         </div>
                     @endif
@@ -107,8 +109,14 @@
                     <div class="col-lg-8">
                         
                         @if(Session::has('info'))
-                            <div class="alert alert-success" role="alert-success">
+                            <div class="alert alert-primary" role="alert-info">
                                 {{ Session::get('info') }}
+                            </div>
+                        @endif
+
+                        @if(Session::has('success'))
+                            <div class="alert alert-success" role="alert-success">
+                                {{ Session::get('success') }}
                             </div>
                         @endif
                         
