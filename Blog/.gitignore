@@ -2,6 +2,7 @@
 /public/hot
 /public/uploads/posts/*
 !/public/uploads/posts/*.gitkeep
+!/public/uploads/avatars/*.gitkeep
 /public/storage
 /storage/*.key
 /vendor
