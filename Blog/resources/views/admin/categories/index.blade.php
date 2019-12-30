@@ -3,12 +3,6 @@
 
 @section('content')
 
-		@if(Session::has('success'))
-            <div class="alert alert-success" role="alert-success">
-                {{ Session::get('success') }}
-            </div>
-        @endif
-
 	<div class="card">
 		<div class="card-header">Categories</div>
 		<div class="card-body">			

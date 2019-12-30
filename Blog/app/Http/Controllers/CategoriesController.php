@@ -106,6 +106,11 @@ class CategoriesController extends Controller
     {
         //
         $category = Category::find($id);
+
+        //delete posts
+        foreach($category->posts as $post){
+            $post->forceDelete();
+        }
         
         $category->delete();
 
