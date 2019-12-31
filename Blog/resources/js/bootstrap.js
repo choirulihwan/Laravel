@@ -42,3 +42,4 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 //added by choirul
 window.toastr = require('toastr');
+window.summernote = require('summernote');

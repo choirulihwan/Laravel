@@ -23,6 +23,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "summernote": "^0.8.14",
         "toastr": "^2.1.4"
     }
 }
