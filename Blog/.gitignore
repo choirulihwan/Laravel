@@ -2,7 +2,9 @@
 /public/hot
 /public/uploads/posts/*
 !/public/uploads/posts/*.gitkeep
+/public/uploads/avatars/*
 !/public/uploads/avatars/*.gitkeep
+!/public/uploads/avatars/1.png
 /public/storage
 /storage/*.key
 /vendor
