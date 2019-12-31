@@ -40,8 +40,8 @@ Repository for laravel applications:
 # composer require laravel/helpers
 # Illuminate\Support\Str (dicontroller)
 
-#error:
-#Illuminate\Contracts\Container\BindingResolutionException  : Target class [UsersTableSeeder] does not exist. => when running php artisan db:seed
-#solution:
-#composer  dump-autoload
+# error:
+# Illuminate\Contracts\Container\BindingResolutionException  : Target class [UsersTableSeeder] does not exist. => when running php artisan db:seed
+# solution:
+# composer  dump-autoload
 
