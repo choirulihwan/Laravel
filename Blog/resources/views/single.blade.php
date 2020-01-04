@@ -37,14 +37,14 @@
                                 <i class="seoicon-clock"></i>
 
                                 <time class="published" datetime="2016-03-20 12:00:00">
-                                    {{ $post->created_at->toFormattedDateString() }}}
+                                    {{ $post->created_at->toFormattedDateString() }}
                                 </time>
 
                             </span>
 
                             <span class="category">
                                 <i class="seoicon-tags"></i>
-                                <a href="#">{{ $post->category->name }}</a>
+                                <a href="{{ route('category.single', ['id' => $post->category->id])}}">{{ $post->category->name }}</a>
                                 
                             </span>
 
@@ -60,7 +60,7 @@
                                 <div class="tags-wrap">                                    
                                     
                                     @foreach($post->tags as $tag)
-                                    	<a href="#" class="w-tags-item">{{ $tag->tag }}</a>
+                                    	<a href="{{ route('tag.single', ['id' => $tag->id]) }}" class="w-tags-item">{{ $tag->tag }}</a>
                                     @endforeach
 
                                 </div>
@@ -133,17 +133,18 @@
                             <use xlink:href="#arrow-left"></use>
                         </svg>
                         <div class="btn-content">
-                            <div class="btn-content-title">Next Post</div>
-                            <p class="btn-content-subtitle">{{ $next->title }}</p>
+                            <div class="btn-content-title">Previous Post</div>
+                            <p class="btn-content-subtitle">{{ $prev->title }}</p>
                         </div>
+                        
                     </a>
                     @endif
 
                     @if($prev)
                     <a href="{{ route('post.single', ['slug' => $prev->slug]) }}" class="btn-next-wrap">
                         <div class="btn-content">
-                            <div class="btn-content-title">Previous Post</div>
-                            <p class="btn-content-subtitle">{{ $prev->title }}</p>
+                            <div class="btn-content-title">Next Post</div>
+                            <p class="btn-content-subtitle">{{ $next->title }}</p>
                         </div>
                         <svg class="btn-next">
                             <use xlink:href="#arrow-right"></use>
@@ -175,26 +176,7 @@
 
             <!-- Sidebar-->
             
-            <div class="col-lg-12">
-                <aside aria-label="sidebar" class="sidebar sidebar-right">
-                    <div  class="widget w-tags">
-                        <div class="heading text-center">
-                            <h4 class="heading-title">ALL BLOG TAGS</h4>
-                            <div class="heading-line">
-                                <span class="short-line"></span>
-                                <span class="long-line"></span>
-                            </div>
-                        </div>
-
-                        <div class="tags-wrap">
-                            
-                            @foreach($tags as $tag)
-                                <a href="#" class="w-tags-item">{{ $tag->tag }}</a>
-                            @endforeach
-                        </div>
-                    </div>
-                </aside>
-            </div>
+            @include('includes.sidebar')
 
             <!-- End Sidebar-->
 

@@ -25,6 +25,30 @@ Route::get('/post/{slug}', [
 	'as'	=> 'post.single'
 ]);
 
+Route::get('/category/{id}', [
+	'uses'	=> 'FrontEndController@category',
+	'as'	=> 'category.single'
+]);
+
+Route::get('/tag/{id}', [
+	'uses'	=> 'FrontEndController@tag',
+	'as'	=> 'tag.single'
+]);
+
+Route::get('/results', function(){
+	$posts = \App\Post::where('title', 'like', '%'.request('query').'%')->get();
+
+	return view('results')->with('posts', $posts)
+							->with('title', 'Search result :'.request('query'))
+                            ->with('settings', \App\Settings::first())
+                            ->with('categories', \App\Category::all())
+                            ->with('query', request('query'))
+                            ->with('tags', \App\Tag::all())
+							;
+
+
+});
+
 Auth::routes();
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
