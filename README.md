@@ -17,6 +17,9 @@ Repository for laravel applications:
 # 10. buat view di resource/views/admin/<nama_view>.blade.php
 # 11. buat route di routes/web.php
 
+# alter table
+# php artisan make:migration <nama_migrasi> --table="<nama_table>"
+# php artisan migrate
 
 # catatan
 # menjalankan make:auth di laravel 6
