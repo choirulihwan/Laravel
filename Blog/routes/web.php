@@ -15,6 +15,13 @@
     return view('welcome');
 });*/
 
+Route::post('/subscribe', function(){
+	$email = request('email');
+	Newsletter::subscribe($email);
+	Session::flash('subscribe', 'Successfully subscribed');
+	return redirect()->back();
+});
+
 Route::get('/', [
 	'uses'	=> 'FrontEndController@index',
 	'as'	=> 'index'

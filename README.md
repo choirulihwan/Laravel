@@ -48,3 +48,11 @@ Repository for laravel applications:
 # solution:
 # composer  dump-autoload
 
+# error:
+# install curl lib in php 7.2 ubuntu (curl required by spatie/newsletter)
+# solution
+# sudo add-apt-repository ppa:ondrej/php
+# sudo apt update
+# sudo apt install php7.2-fpm php7.2-gd php7.2-curl php7.2-mysql php7.2-dev php7.2-cli php7.2-common php7.2-mbstring php7.2-intl php7.2-zip php7.2-bcmath
+
+

@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('app/css/normalize.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app/css/grid.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app/css/styles.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
 
 
     <!--Plugins styles-->
@@ -57,9 +58,10 @@
                 <div class="subscribe scrollme">
                     <div class="col-lg-6 col-lg-offset-5 col-md-6 col-md-offset-5 col-sm-12 col-xs-12">
                         <h4 class="subscribe-title">Email Newsletters!</h4>
-                        <form class="subscribe-form" method="post" action="">
+                        <form class="subscribe-form" method="post" action="/subscribe">
+                            {{ csrf_field() }}
                             <input class="email input-standard-grey input-white" name="email" required="required" placeholder="Your Email Address" type="email">
-                            <button class="subscr-btn">subscribe
+                            <button class="subscr-btn" type="submit">subscribe
                                 <span class="semicircle--right"></span>
                             </button>
                         </form>
@@ -156,6 +158,17 @@
 <script src="{{ asset('app/js/velocity.min.js') }}"></script>
 <script src="{{ asset('app/js/ScrollMagic.min.js') }}"></script>
 <script src="{{ asset('app/js/animation.velocity.min.js') }}"></script>
+
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script>
+        @if(Session::has('subscribe'))
+            $(document).ready(function() {
+                toastr.success("{{ Session::get('subscribe') }}");
+            });
+        @endif
+
+    </script>
 
 
 <!-- ...end JS Script -->
