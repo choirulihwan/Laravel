@@ -1,7 +1,8 @@
 # Laravel
 Repository for laravel applications:
-# 1 Todos Application
-# 2 Blog Application
+# 1 Todos Application (laravel 6.7)
+# 2 Blog Application (laravel 6.7)
+# 3 Forum Application (laravel 5.4)
 
 # catatan
 # membuat model di laravel 6
