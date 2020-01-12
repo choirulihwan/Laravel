@@ -66,7 +66,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 		return App\Tag::find(2)->posts;
 	});
 
-	Route::get('/home', [
+	Route::get('/dashboard', [
 		'uses' 	=> 'HomeController@index',
 		'as'	=> 'home'
 	]);
