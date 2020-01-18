@@ -47,4 +47,9 @@ Route::group(['middleware' => 'auth'], function(){
 		'as'	=> 'discussions.store'
 	]); 
 
+	Route::get('discussion/{slug}', [
+		'uses'	=> 'DiscussionsController@show',
+		'as'	=> 'discussion'
+	]);
+
 });

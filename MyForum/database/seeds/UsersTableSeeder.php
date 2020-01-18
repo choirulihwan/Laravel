@@ -20,5 +20,14 @@ class UsersTableSeeder extends Seeder
         	'avatar'	=> asset('avatars/avatar.png'),
 
         ]);
+
+        App\User::create([
+            'name'      => 'erna',
+            'password'  => bcrypt('password'),
+            'email'     => 'ernaemcha@yahoo.com',
+            'admin'     => 1,
+            'avatar'    => asset('avatars/avatar.png'),
+
+        ]);
     }
 }
