@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder
         	'password'	=> bcrypt('password'),
         	'email'		=> 'aristhu_oracle@yahoo.com',
         	'admin'		=> 1,
-        	'avatar'	=> asset('avatars/avatar.png'),
+        	'avatar'	=> 'avatars/avatar.png',
 
         ]);
 
@@ -26,7 +26,7 @@ class UsersTableSeeder extends Seeder
             'password'  => bcrypt('password'),
             'email'     => 'ernaemcha@yahoo.com',
             'admin'     => 1,
-            'avatar'    => asset('avatars/avatar.png'),
+            'avatar'    => 'avatars/avatar.png',
 
         ]);
     }
