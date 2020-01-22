@@ -71,6 +71,18 @@ Repository for laravel applications:
 # cd <project_directory>
 # composer install
 
+# error
+# Expected response code 250 but got code “530”, with message "530 5.7.1 Authentication required
+# solution:
+# your mail.php on config you declare host as smtp.mailgun.org and port is 587 while on env is different. 
+# you need to change your mail.php to
+# 'host' => env('MAIL_HOST', 'mailtrap.io'),
+# 'port' => env('MAIL_PORT', 2525),
+# if you desire to use mailtrap.Then run
+# php artisan config:cache
+
+
+
 # run test
 # /vendor/bin/phpunit <nama_direktori>
 

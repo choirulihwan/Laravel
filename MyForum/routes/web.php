@@ -52,7 +52,7 @@ Route::group(['middleware' => 'auth'], function(){
 
 	Route::resource('channels', 'ChannelsController');
 
-	Route::get('discussion/create', [
+	Route::get('discussion/create/new', [
 		'uses'	=> 'DiscussionsController@create',
 		'as'	=> 'discussions.create'
 	]);
@@ -76,5 +76,16 @@ Route::group(['middleware' => 'auth'], function(){
 		'uses'	=> 'RepliesController@unlike',
 		'as'	=> 'reply.unlike'
 	]);
+
+	Route::get('discussion/watch/{id}', [
+		'uses'	=> 'WatchersController@watch',
+		'as'	=> 'discussion.watch'
+	]);
+
+	Route::get('discussion/unwatch/{id}', [
+		'uses'	=> 'WatchersController@unwatch',
+		'as'	=> 'discussion.unwatch'
+	]);
+
 
 });

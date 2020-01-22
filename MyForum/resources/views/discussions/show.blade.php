@@ -7,7 +7,16 @@
                     <img src="{{ asset($d->user->avatar) }}" alt="" width="40px" height="40px" />
                     &nbsp;&nbsp;&nbsp;
                     <span>{{ $d->user->name }}, {{ $d->created_at->diffForHumans() }}</span>
-                    <a href="{{ route('discussion', ['slug' => $d->slug]) }}" class="btn btn-default pull-right">View</a>
+                    
+                    @if($d->is_being_watched_by_auth_user())
+                    
+                        <a href="{{ route('discussion.unwatch', ['id' => $d->id]) }}" class="btn btn-xs btn-danger pull-right">Unwatch</a>
+
+                    @else
+
+                        <a href="{{ route('discussion.watch', ['id' => $d->id]) }}" class="btn btn-xs btn-default pull-right">Watch</a>
+
+                    @endif;
                 </div>
 
                 <div class="panel-body">
@@ -57,6 +66,7 @@
 
             <div class="panel panel-default">
                 <div class="panel-body">
+                    @if(Auth::check())
                     <form action="{{ route('discussion.reply', ['id' => $d->id]) }}" method="post">
                         {{ csrf_field() }}
 
@@ -69,6 +79,9 @@
                             <button class="btn pull-right">Leave a reply</button>
                         </div>
                     </form>
+                    @else
+                        <div class="text-center"><h2>Sign in to leave reply</h2></div>
+                    @endif
                 </div>
             </div>
 

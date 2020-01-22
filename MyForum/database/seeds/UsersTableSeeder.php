@@ -26,7 +26,7 @@ class UsersTableSeeder extends Seeder
             'password'  => bcrypt('password'),
             'email'     => 'ernaemcha@yahoo.com',
             'admin'     => 1,
-            'avatar'    => 'avatars/avatar.png',
+            'avatar'    => 'avatars/avatar2.png',
 
         ]);
     }

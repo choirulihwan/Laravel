@@ -79,12 +79,13 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    My Forum course
+                    <a href="/forum" style="text-decoration: none;color:black;">My Forum course</a>
                 </div>
 
                 <div class="links">
                     <a href="{{ route('social.auth', ['provider' => 'github']) }}">GitHub</a>
                     <a href="{{ route('social.auth', ['provider' => 'facebook']) }}">Facebook</a>
+                    <a href="/login">Email</a>
                 </div>
             </div>
         </div>

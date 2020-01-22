@@ -20,6 +20,6 @@ class ForumsController extends Controller
 
     	$channel = Channel::where('slug', $slug)->first();
 
-    	return view('channel')->with('discussions', $channel->discussions);
+    	return view('channel')->with('discussions', $channel->discussions()->paginate(5));
     }
 }

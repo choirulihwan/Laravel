@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Discussion;
 use App\Reply;
+use App\User;
 use Session;
 use Auth;
+use Notification;
 
 class DiscussionsController extends Controller
 {
@@ -50,12 +52,20 @@ class DiscussionsController extends Controller
 
         $d = Discussion::find($id);
 
+        $watchers = [];
+        foreach($d->watchers as $watcher):
+            array_push($watchers, User::find($watcher->user_id));
+        endforeach;
+
         $reply = Reply::create([
             'user_id'       => Auth::id(),
             'discussion_id' => $id,
             'content'       => request()->reply
         ]);
-        
+
+
+        //dd($watchers);
+        Notification::send($watchers, new \App\Notifications\NewReplyAdded($d));
 
         Session::flash('success', 'Replied to discussion');
         return redirect()->back();
