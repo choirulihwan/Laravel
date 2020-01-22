@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Like;
+use App\Reply;
 use Session;
 use Illuminate\Http\Request;
 
@@ -33,5 +34,16 @@ class RepliesController extends Controller
     	Session::flash('success', 'You unliked the reply');
 
     	return redirect()->back();
+    }
+
+    public function best_answer($id) {
+        $reply = Reply::find($id);
+        $reply->best_answer = 1;
+        $reply->save(); 
+
+        Session::flash('success', 'Reply has been marked as the best answer');
+
+        return redirect()->back();
+    
     }
 }

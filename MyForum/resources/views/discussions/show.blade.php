@@ -26,6 +26,22 @@
                     <p class="text-center">
                         <strong>{{ $d->content }}</strong>
                     </p> 
+
+                    <hr/>
+                    
+                    @if($best_answer)
+                    <div class="text-center" style="padding: 20px;">
+                        <h3 class="text-center">Best Answer</h3>
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <img src="{{ asset($best_answer->user->avatar) }}" alt="" width="40px" height="40px" />
+                            </div>
+                            <div class="panel-body">
+                                {{ $best_answer->content }}
+                            </div>
+                        </div>
+                    </div>
+                    @endif
                     
                 </div>
 
@@ -42,7 +58,11 @@
                 <div class="panel-heading">
                     <img src="{{ asset($r->user->avatar) }}" alt="" width="40px" height="40px" />
                     &nbsp;&nbsp;&nbsp;
-                    <span>{{ $r->user->name }}, {{ $r->created_at->diffForHumans() }}</span>                    
+                    <span>{{ $r->user->name }}, {{ $r->created_at->diffForHumans() }}</span>  
+
+                    @if(!$best_answer)
+                        <a href="{{ route('discussion.best.answer', ['id' => $r->id]) }}" class="btn btn-xs btn-info">Mark as best answer</a>                  
+                    @endif
                 </div>
 
                 <div class="panel-body">
