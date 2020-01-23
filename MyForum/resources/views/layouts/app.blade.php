@@ -100,6 +100,15 @@
                                 <li class="list-group-item">
                                     <a style="text-decoration: none;" href="/forum">Home</a>
                                 </li>
+                                <li class="list-group-item">
+                                    <a style="text-decoration: none;" href="/forum?filter=me">My discussion</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a style="text-decoration: none;" href="/forum?filter=solved">Answered discussion</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a style="text-decoration: none;" href="/forum?filter=unsolved">Unanswered discussion</a>
+                                </li>
                         </ul>
                     </div>                    
 

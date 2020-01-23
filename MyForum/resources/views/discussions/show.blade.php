@@ -6,16 +6,22 @@
                 <div class="panel-heading">
                     <img src="{{ asset($d->user->avatar) }}" alt="" width="40px" height="40px" />
                     &nbsp;&nbsp;&nbsp;
-                    <span>{{ $d->user->name }}, <strong>({{ $d->user->points }})</strong> {{ $d->created_at->diffForHumans() }}</span>
-                    
-                    @if($d->is_being_watched_by_auth_user())
-                    
-                        <a href="{{ route('discussion.unwatch', ['id' => $d->id]) }}" class="btn btn-xs btn-danger pull-right">Unwatch</a>
+                    <span>{{ $d->user->name }}, <strong>({{ $d->user->points }})</strong> {{ $d->created_at->diffForHumans() }}</span>                     
 
+                    @if($d->hasBestAnswer())
+                        <span class="btn btn-success pull-right btn-xs">Closed</span>
                     @else
+                        <span class="btn btn-danger pull-right btn-xs">Open</span>
+                    @endif
 
-                        <a href="{{ route('discussion.watch', ['id' => $d->id]) }}" class="btn btn-xs btn-default pull-right">Watch</a>
+                    @if(Auth::id() == $d->user->id)
+                        <a href="{{ route('discussion.edit', ['slug' => $d->slug]) }}" class="btn btn-xs btn-primary pull-right" style="margin-right:8px;">Edit</a>
+                    @endif
 
+                    @if($d->is_being_watched_by_auth_user())                    
+                        <a href="{{ route('discussion.unwatch', ['id' => $d->id]) }}" class="btn btn-xs btn-danger pull-right" style="margin-right:8px;">Unwatch</a>
+                    @else
+                        <a href="{{ route('discussion.watch', ['id' => $d->id]) }}" class="btn btn-xs btn-default pull-right" style="margin-right:8px;">Watch</a>
                     @endif
                 </div>
 

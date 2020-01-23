@@ -9,7 +9,14 @@
                     <img src="{{ asset($d->user->avatar) }}" alt="" width="40px" height="40px" />
                     &nbsp;&nbsp;&nbsp;
                     <span>{{ $d->user->name }}, {{ $d->created_at->diffForHumans() }}</span>
-                    <a href="{{ route('discussion', ['slug' => $d->slug]) }}" class="btn btn-default pull-right">View</a>
+                    
+                    @if($d->hasBestAnswer())
+                        <span class="btn btn-success pull-right btn-xs">Closed</span>
+                    @else
+                        <span class="btn btn-danger pull-right btn-xs">Open</span>
+                    @endif
+
+                    <a href="{{ route('discussion', ['slug' => $d->slug]) }}" class="btn btn-xs btn-default pull-right" style="margin-right: 3px;">View</a>
                 </div>
 
                 <div class="panel-body">
