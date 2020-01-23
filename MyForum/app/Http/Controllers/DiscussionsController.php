@@ -66,6 +66,8 @@ class DiscussionsController extends Controller
             'content'       => request()->reply
         ]);
 
+        $reply->user->points += 25;
+        $reply->user->save();
 
         //dd($watchers);
         Notification::send($watchers, new \App\Notifications\NewReplyAdded($d));

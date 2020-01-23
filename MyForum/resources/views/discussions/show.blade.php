@@ -6,7 +6,7 @@
                 <div class="panel-heading">
                     <img src="{{ asset($d->user->avatar) }}" alt="" width="40px" height="40px" />
                     &nbsp;&nbsp;&nbsp;
-                    <span>{{ $d->user->name }}, {{ $d->created_at->diffForHumans() }}</span>
+                    <span>{{ $d->user->name }}, <strong>({{ $d->user->points }})</strong> {{ $d->created_at->diffForHumans() }}</span>
                     
                     @if($d->is_being_watched_by_auth_user())
                     
@@ -16,7 +16,7 @@
 
                         <a href="{{ route('discussion.watch', ['id' => $d->id]) }}" class="btn btn-xs btn-default pull-right">Watch</a>
 
-                    @endif;
+                    @endif
                 </div>
 
                 <div class="panel-body">
@@ -35,6 +35,7 @@
                         <div class="panel panel-success">
                             <div class="panel-heading">
                                 <img src="{{ asset($best_answer->user->avatar) }}" alt="" width="40px" height="40px" />
+                                <span>{{ $best_answer->user->name }}, <strong>({{ $best_answer->user->points }})</strong></span>
                             </div>
                             <div class="panel-body">
                                 {{ $best_answer->content }}
@@ -54,14 +55,17 @@
             <!--replies-->
             @foreach($d->replies as $r)
 
+            @if(!$r->best_answer)
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <img src="{{ asset($r->user->avatar) }}" alt="" width="40px" height="40px" />
                     &nbsp;&nbsp;&nbsp;
-                    <span>{{ $r->user->name }}, {{ $r->created_at->diffForHumans() }}</span>  
+                    <span>{{ $r->user->name }}, <strong>({{ $r->user->points }})</strong> {{ $r->created_at->diffForHumans() }}</span>  
 
                     @if(!$best_answer)
-                        <a href="{{ route('discussion.best.answer', ['id' => $r->id]) }}" class="btn btn-xs btn-info">Mark as best answer</a>                  
+                        @if(Auth::id() == $d->user->id)
+                            <a href="{{ route('discussion.best.answer', ['id' => $r->id]) }}" class="btn btn-xs btn-info">Mark as best answer</a>
+                        @endif                  
                     @endif
                 </div>
 
@@ -81,7 +85,7 @@
                     @endif
                 </div>
             </div>
-
+            @endif
             @endforeach
 
             <div class="panel panel-default">
