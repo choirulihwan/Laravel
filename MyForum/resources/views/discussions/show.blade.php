@@ -32,7 +32,7 @@
                     <h3 class="text-center">{{ $d->title }}</h3> 
                     
                     <p class="text-center">
-                        <strong>{{ $d->content }}</strong>
+                        {!! Markdown::convertToHtml($d->content) !!}
                     </p> 
 
                     <hr/>
