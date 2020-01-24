@@ -15,7 +15,9 @@
                     @endif
 
                     @if(Auth::id() == $d->user->id)
-                        <a href="{{ route('discussion.edit', ['slug' => $d->slug]) }}" class="btn btn-xs btn-primary pull-right" style="margin-right:8px;">Edit</a>
+                        @if(!$d->hasBestAnswer())
+                            <a href="{{ route('discussion.edit', ['slug' => $d->slug]) }}" class="btn btn-xs btn-primary pull-right" style="margin-right:8px;">Edit</a>
+                        @endif
                     @endif
 
                     @if($d->is_being_watched_by_auth_user())                    
@@ -70,9 +72,16 @@
 
                     @if(!$best_answer)
                         @if(Auth::id() == $d->user->id)
-                            <a href="{{ route('discussion.best.answer', ['id' => $r->id]) }}" class="btn btn-xs btn-info">Mark as best answer</a>
-                        @endif                  
+                            <a href="{{ route('discussion.best.answer', ['id' => $r->id]) }}" class="btn btn-xs btn-info pull-right" style="margin-left: 3px;">Mark as best answer</a>
+                        @endif  
+
                     @endif
+
+                        @if(Auth::id() == $r->user->id)
+                            @if(!$r->best_answer)
+                                <a href="{{ route('reply.edit', ['id' => $r->id]) }}" class="btn btn-xs btn-info pull-right">Edit</a>
+                            @endif
+                        @endif                
                 </div>
 
                 <div class="panel-body">
