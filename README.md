@@ -3,6 +3,7 @@ Repository for laravel applications:
 # 1 Todos Application (laravel 6.7)
 # 2 Blog Application (laravel 6.7)
 # 3 Forum Application (laravel 5.4)
+# 4 Ecommerce Application (laravel 5.4)
 
 # catatan
 # membuat model di laravel 6
@@ -80,8 +81,6 @@ Repository for laravel applications:
 # 'port' => env('MAIL_PORT', 2525),
 # if you desire to use mailtrap.Then run
 # php artisan config:cache
-
-
 
 # run test
 # /vendor/bin/phpunit <nama_direktori>
