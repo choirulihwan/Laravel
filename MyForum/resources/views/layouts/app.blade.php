@@ -110,7 +110,23 @@
                                     <a style="text-decoration: none;" href="/forum?filter=unsolved">Unanswered discussion</a>
                                 </li>
                         </ul>
-                    </div>                    
+                    </div>
+
+                    @if(Auth::check())
+
+                    @if(Auth::user()->admin)
+
+                    <div class="panel panel-body">
+                        <ul class="list-group">
+                                <li class="list-group-item">
+                                    <a style="text-decoration: none;" href="/channels">All channels</a>
+                                </li>                                
+                        </ul>
+                    </div>
+
+                    @endif 
+
+                    @endif                   
 
                 </div>
 
