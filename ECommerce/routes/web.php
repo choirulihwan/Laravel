@@ -31,6 +31,11 @@ Route::get('/cart', [
 	'as'	=> 'cart'
 ]);
 
+Route::get('/cart/delete/{id}', [
+	'uses'	=> 'ShoppingController@cart_delete',
+	'as'	=> 'cart.delete'
+]);
+
 
 
 Auth::routes();
