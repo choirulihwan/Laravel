@@ -11,4 +11,8 @@ class FrontPageController extends Controller
     public function index(){
     	return view('index', ['products' => Product::paginate(3)]);
     }
+
+    public function singleProduct($id){
+    	return view('single', ['product' => Product::find($id)]);
+    }
 }

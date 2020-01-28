@@ -16,6 +16,12 @@ Route::get('/', [
 	'as'	=> 'index'
 ]);
 
+Route::get('/product/{id}', [
+	'uses'	=> 'FrontPageController@singleProduct',
+	'as'	=> 'product.single'
+]);
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
