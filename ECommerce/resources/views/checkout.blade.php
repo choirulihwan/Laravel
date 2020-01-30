@@ -43,7 +43,7 @@
                             </td>
 
                             <td class="product-subtotal">
-                                <h5 class="total amount">Rp. {{ $item->total() }}</h5>
+                                <h5 class="total amount">Rp. {{ number_format($item->total()) }}</h5>
                             </td>
 
                         </tr>
@@ -88,7 +88,7 @@
                             </td>
 
                             <td class="product-subtotal">
-                                <h5 class="total amount">$100.97</h5>
+                                <h5 class="total amount">Rp. {{ number_format(Cart::total()) }}</h5>
                             </td>
                         </tr>
 
@@ -112,13 +112,14 @@
                             </a>
                             
                             <span style="float: right;">
-                                <form action="/your-server-side-code" method="POST">
+                                <form action="{{ route('cart.checkout') }}" method="POST">
+                                    {{ csrf_field() }}
                                       <script
                                         src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                                        data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
-                                        data-amount="999"
-                                        data-name="Stripe.com"
-                                        data-description="Widget"
+                                        data-key="pk_test_26TgbVNtqpBGMlGfMiWQhwwP00VsCvFNzY"
+                                        data-amount="{{ (Cart::total() * 100/14000) }}"
+                                        data-name="Ecommerce book online shop"
+                                        data-description="Buy some books"
                                         data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
                                         data-locale="auto"
                                         data-zip-code="true">
