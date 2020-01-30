@@ -117,7 +117,7 @@
                                       <script
                                         src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                                         data-key="pk_test_26TgbVNtqpBGMlGfMiWQhwwP00VsCvFNzY"
-                                        data-amount="{{ (Cart::total() * 100/14000) }}"
+                                        data-amount="{{ ceil(Cart::total() * 100/14000) }}"
                                         data-name="Ecommerce book online shop"
                                         data-description="Buy some books"
                                         data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
