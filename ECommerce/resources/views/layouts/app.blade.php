@@ -38,7 +38,7 @@
                     <ul class="nav navbar-nav">
                         &nbsp;
                         <li><a href="{{ route('products.index') }}">Products</a></li>
-                        <li><a href="{{ route('login') }}">New Product</a></li>
+                        <li><a href="{{ route('products.create') }}">New Product</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -72,6 +72,22 @@
                 </div>
             </div>
         </nav>
+
+        @if($errors->count() > 0)
+            <ul class="list-group">
+                @foreach($errors->all() as $error)
+                    <li class="list-group-item text-danger">
+                        {{ $error }}
+                    </li>
+                @endforeach
+            </ul>
+        @endif
+
+        @if(Session::has('success'))
+            <div class="alert alert-success">
+                {{ Session::get('success') }}
+            </div>
+        @endif
 
         @yield('content')
     </div>

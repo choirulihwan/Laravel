@@ -1,3 +1,5 @@
+/public/uploads/products/*
+!/public/uploads/products/*.gitkeep
 /node_modules
 /public/hot
 /public/storage

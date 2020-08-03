@@ -12,6 +12,8 @@ class ProductsTableSeeder extends Seeder
     public function run()
     {
         //
+        factory(\App\Product::class, 30)->create();
+        /*
         $p1 = [
         	'name'			=> 'Membumikan Alquran', 
         	'image'		=> 'uploads/products/book.png', 
@@ -28,5 +30,8 @@ class ProductsTableSeeder extends Seeder
 
         App\Product::create($p1);
         App\Product::create($p2);
+        */
+
+
     }
 }
