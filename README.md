@@ -4,6 +4,12 @@ Repository for laravel applications:
 # 2 Blog Application (laravel 6.7)
 # 3 Forum Application (laravel 5.4)
 # 4 Ecommerce Application (laravel 5.4)
+# 5 Company Profile (laravel 8.5)
+
+# catatan
+# step by step membuat project di laravel
+# 1 composer create-project laravel/laravel <nama_project>
+# 2 merubah tampilan theme index
 
 # catatan
 # membuat model di laravel 6
