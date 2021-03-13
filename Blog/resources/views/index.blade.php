@@ -173,7 +173,7 @@
                     <div class="row">
                         <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
                             <div class="heading">
-                                <h4 class="h1 heading-title">{{ $laravel->name }}</h4>
+                                <h4 class="h1 heading-title">{{ $sepakbola->name }}</h4>
                                 <div class="heading-line">
                                     <span class="short-line"></span>
                                     <span class="long-line"></span>
@@ -185,7 +185,7 @@
                     <div class="row">
                         <div class="case-item-wrap">
 
-                            @foreach($laravel->posts()->orderBy('created_at', 'desc')->take(3)->get() as $post)
+                            @foreach($sepakbola->posts()->orderBy('created_at', 'desc')->take(3)->get() as $post)
                             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                 <div class="case-item">
                                     <div class="case-item__thumb">
@@ -207,7 +207,7 @@
                     <div class="row">
                         <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
                             <div class="heading">
-                                <h4 class="h1 heading-title">{{ $django->name }}</h4>
+                                <h4 class="h1 heading-title">{{ $otomotif->name }}</h4>
                                 <div class="heading-line">
                                     <span class="short-line"></span>
                                     <span class="long-line"></span>
@@ -218,7 +218,7 @@
                     <div class="row">
                         <div class="case-item-wrap">
                             
-                            @foreach($django->posts()->orderBy('created_at', 'desc')->take(3)->get() as $post)
+                            @foreach($otomotif->posts()->orderBy('created_at', 'desc')->take(3)->get() as $post)
                             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                 <div class="case-item">
                                     <div class="case-item__thumb">
@@ -237,7 +237,7 @@
                     <div class="row">
                         <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
                             <div class="heading">
-                                <h4 class="h1 heading-title">{{ $wordpress->name }}</h4>
+                                <h4 class="h1 heading-title">{{ $politik->name }}</h4>
                                 <div class="heading-line">
                                     <span class="short-line"></span>
                                     <span class="long-line"></span>
@@ -248,7 +248,7 @@
                     <div class="row">
                         <div class="case-item-wrap">
                             
-                            @foreach($wordpress->posts()->orderBy('created_at', 'desc')->take(3)->get() as $post)
+                            @foreach($politik->posts()->orderBy('created_at', 'desc')->take(3)->get() as $post)
                             <div class="col-lg-4  col-md-4 col-sm-6 col-xs-12">
                                 <div class="case-item">
                                     <div class="case-item__thumb">

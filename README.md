@@ -82,6 +82,10 @@ Repository for laravel applications:
 # if you desire to use mailtrap.Then run
 # php artisan config:cache
 
+# error:
+# In PackageManifest.php line 122: Undefined index: name
+
+
 # run test
 # /vendor/bin/phpunit <nama_direktori>
 

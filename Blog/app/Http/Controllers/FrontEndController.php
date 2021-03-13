@@ -25,9 +25,9 @@ class FrontEndController extends Controller
             //->with('laravel', Category::find($laravel_id))
     		//->with('django', Category::find($django_id))
     		//->with('wordpress', Category::find($wordpress_id))
-            ->with('laravel', Category::where('name', 'Laravel')->first())
-            ->with('django', Category::where('name', 'Django')->first())
-            ->with('wordpress', Category::where('name', 'Wordpress')->first())
+            ->with('sepakbola', Category::where('name', 'Sepakbola')->first())
+            ->with('otomotif', Category::where('name', 'Otomotif')->first())
+            ->with('politik', Category::where('name', 'Politik')->first())
     		->with('settings', Settings::first())
     		;
     	
