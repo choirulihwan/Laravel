@@ -10,6 +10,7 @@ Repository for laravel applications:
 # step by step membuat project di laravel
 # 1 composer create-project laravel/laravel <nama_project>
 # 2 merubah tampilan theme index
+# 3 buat base template frontend.blade
 
 # catatan
 # membuat model di laravel 6
