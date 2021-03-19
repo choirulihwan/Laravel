@@ -22,3 +22,12 @@ Route::post('/insert_guestbook', [App\Http\Controllers\GuestBookController::clas
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
+    
+    Route::get('/guestbook', [
+		'uses' 	=> 'App\Http\Controllers\GuestBookController@index',
+		'as'	=> 'guestbook'
+	]);
+
+});

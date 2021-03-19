@@ -4,10 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\GuestBook;
-use Session;
 
 class GuestBookController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        // $this->middleware('auth');
+    }
+
+    
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +25,7 @@ class GuestBookController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.guestbook.index')->with('guestbooks', GuestBook::all());
     }
 
     /**

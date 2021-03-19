@@ -21,6 +21,7 @@ Repository for laravel applications:
 # 5.1.5 php artisan migrate (migrasi tabel user)
 # 5.1.6 register via UI atau edit seeeder
 
+
 # catatan
 # membuat model di laravel 6
 # 1. php artisan make:model <nama_model> -m
