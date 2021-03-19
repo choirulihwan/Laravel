@@ -81,12 +81,14 @@
                                     <div class="form-input mt-25">
                                         <label>Massage</label>
                                         <div class="input-items default">
-                                            <textarea name="massage" placeholder="Message"></textarea>
+                                            <textarea name="message" placeholder="Message"></textarea>
                                             <i class="lni lni-pencil-alt"></i>
                                         </div>
                                     </div> <!-- form input -->
                                 </div>
+
                                 <p class="form-message"></p>
+                                
                                 <div class="col-md-12">
                                     <div class="form-input light-rounded-buttons mt-30">
                                         <button class="main-btn light-rounded-two" type="submit">Send Message</button>

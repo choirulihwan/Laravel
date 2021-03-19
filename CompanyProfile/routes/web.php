@@ -17,14 +17,7 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::post('/insert_guestbook', function(){
-	$name = request('name');
-    $email = request('email');
-    $message = request('message');
-	// Newsletter::subscribe($email);
-	Session::flash('subscribe', 'Successfully subscribed');
-	return redirect()->back();
-});
+Route::post('/insert_guestbook', [App\Http\Controllers\GuestBookController::class, 'store']);
 
 Auth::routes();
 
