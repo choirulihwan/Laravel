@@ -11,6 +11,15 @@ Repository for laravel applications:
 # 1 composer create-project laravel/laravel <nama_project>
 # 2 merubah tampilan theme index
 # 3 buat base template frontend.blade
+# 4 buat content template
+# 5 buat backend
+# 5.1 buat mekanisme login backend
+# 5.1.1 composer require laravel/ui
+# 5.1.2 php artisan ui [bootstrap] --auth (bisa diganti dgn bootstrap, vue, react)
+# 5.1.3 npm install && npm run dev
+# 5.1.4 buat dan setting database di .env
+# 5.1.5 php artisan migrate (migrasi tabel user)
+# 5.1.6 register via UI atau edit seeeder
 
 # catatan
 # membuat model di laravel 6
@@ -22,9 +31,12 @@ Repository for laravel applications:
 # 6. panggil seeder di database/seeds/DatabaseSeeder.php di function run
 # 7. jalankan php artisan migrate
 # 8. jalankan php artisan db:seed
-# 9. buat controller php artisan make:controller <nama_model>Controller --resource
-# 10. buat view di resource/views/admin/<nama_view>.blade.php
-# 11. buat route di routes/web.php
+
+# catatan
+# membuat controller di laravel 6
+# 1. buat controller php artisan make:controller <nama_model>Controller --resource
+# 2. buat view di resource/views/admin/<nama_view>.blade.php
+# 3. buat route di routes/web.php
 
 # catatan
 # step by step after clone or pull
@@ -40,10 +52,11 @@ Repository for laravel applications:
 # php artisan migrate
 
 # catatan
-# menjalankan make:auth di laravel 6
+# menjalankan make:auth di laravel 6 
 # composer require laravel/ui
 # php artisan ui [bootstrap] --auth (bisa diganti dgn bootstrap, vue, react)
 # npm install && npm run dev
+
 
 # error:
 # SQLSTATE[42000]: Syntax error or access violation: 1071 Specified key was too long; max key length is 767 bytes (SQL: alter table `users` add unique `users_email_unique`(`email`))

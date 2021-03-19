@@ -16,3 +16,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
+
+Route::post('/insert_guestbook', function(){
+	$name = request('name');
+    $email = request('email');
+    $message = request('message');
+	// Newsletter::subscribe($email);
+	Session::flash('subscribe', 'Successfully subscribed');
+	return redirect()->back();
+});
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
