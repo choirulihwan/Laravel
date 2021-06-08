@@ -42,7 +42,9 @@ Repository for laravel applications:
 # catatan
 # step by step after clone or pull
 # 1. composer install
+# 2. copy .env.example ke .env
 # 2. php artisan key:generate
+# 3. create database
 # 3. php artisan migrate
 # 4. php artisan db:seed
 # 5. php artisan serve
