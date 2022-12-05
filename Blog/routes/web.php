@@ -56,6 +56,12 @@ Route::get('/results', function(){
 
 });
 
+//inject password
+Route::get('/encrypt/{pass}', function($pass) {
+	return Hash::make($pass);
+});
+	
+
 Auth::routes();
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {

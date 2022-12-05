@@ -63,6 +63,8 @@
 				<div class="form-group">					
 					<label for="category">Featured Image</label>
 					<input type="file" class="form-control" name="featured">
+					<br>
+					<img src="{{ asset($post->featured) }}" class="img-fluid rounded" />
 				</div>
 
 				<div class="form-group">					

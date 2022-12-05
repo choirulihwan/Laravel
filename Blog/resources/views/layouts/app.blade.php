@@ -98,7 +98,7 @@
             <div class="container">
                 <div class="row">
                     @if(Auth::check())
-                        <div class="col-lg-4">
+                        <div class="col-lg-3">
                             <ul class="list-group">
                                 <li class="list-group-item"><a href="{{ route('home') }}">Home</a></li>
                                 
@@ -123,21 +123,25 @@
                         </div>
                     @endif
                     
-                    <div class="col-lg-8">
+                    @guest
+                        <div class="col-lg-12">
+                    @else
+                        <div class="col-lg-9">
+                    @endguest
                         
-                        @if(Session::has('info'))
-                            <div class="alert alert-primary" role="alert-info">
-                                {{ Session::get('info') }}
-                            </div>
-                        @endif
+                    @if(Session::has('info'))
+                        <div class="alert alert-primary" role="alert-info">
+                            {{ Session::get('info') }}
+                        </div>
+                    @endif
 
-                        @if(Session::has('success'))
-                            <div class="alert alert-success" role="alert-success">
-                                {{ Session::get('success') }}
-                            </div>
-                        @endif
+                    @if(Session::has('success'))
+                        <div class="alert alert-success" role="alert-success">
+                            {{ Session::get('success') }}
+                        </div>
+                    @endif
                         
-                        @yield('content')
+                    @yield('content')
                     </div>
                     
                 </div>

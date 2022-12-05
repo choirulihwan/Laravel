@@ -26,23 +26,32 @@
 
 				<div class="form-group">					
 					<label for="title">Title</label>
-					<input type="text" class="form-control" name="title">
+					<input type="text" class="form-control" name="title" value="{{ old('title') }}">
 				</div>
 
 				<div class="form-group">					
 					<label for="featured">Category</label>
 					<select name="category_id" id="category_id" class="form-control">
 						@foreach($categories as $category)
-							<option value="{{ $category->id }}">{{ $category->name }}</option>
+							@if ($category->id == old('category_id'))
+							<option value="{{ $category->id }}" selected>{{ $category->name }}</option>	
+							@else
+							<option value="{{ $category->id }}">{{ $category->name }}</option>	
+							@endif							
 						@endforeach
 					</select>
 				</div>
 
 				<div class="form-group">
 					<label for="tag">Select Tags</label>
-					@foreach($tags as $tag)
+					@foreach($tags as $key => $tag)
 					<div class="checkbox">
+						@if (old('tags.'.$key) == $tag->id)
+						<label><input type="checkbox" name="tags[]" value="{{ $tag->id }}" checked> {{ $tag->tag }} </label>	
+						@else
 						<label><input type="checkbox" name="tags[]" value="{{ $tag->id }}"> {{ $tag->tag }} </label>
+						@endif
+						
 					</div>
 					@endforeach
 				</div>	
@@ -54,12 +63,12 @@
 
 				<div class="form-group">					
 					<label for="content">Content</label>
-					<textarea class="form-control" name="content" id="content" cols="5" rows="20"></textarea>
+					<textarea class="form-control" name="content" id="content" cols="5" rows="20">{{ old('content') }}</textarea>
 				</div>				
 
 				<div class="form-group">					
 					<div class="text-center">
-						<button class="btn btn-success" type="submit">Store post</button>
+						<button class="btn btn-success" type="submit">Save post</button>
 					</div>
 				</div>				
 				
