@@ -13,10 +13,10 @@ class SettingsTableSeeder extends Seeder
     {
         //
         App\Settings::create([
-        	'site_name'			=> "Laravel's Blog",
-        	'contact_number'	=> "087839806881",
-        	'contact_email'		=> "support@laravelsblog.com",
-        	'address'			=> "Jl. Tentara pelajar no.7 Yogyakarta"
+        	'site_name'			=> "SBD Blog",
+        	'contact_number'	=> "087839806882",
+        	'contact_email'		=> "support@sbd.com",
+        	'address'			=> "Bantul Yogyakarta"
         ]);
     }
 }
