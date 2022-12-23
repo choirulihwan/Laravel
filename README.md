@@ -63,9 +63,9 @@ Repository for laravel applications:
 # solusi:
 - edit app/providers/AppServiceProvider.php
 - public function boot()
--    {
--        Schema::defaultStringLength(191);
--    }
+    {
+        Schema::defaultStringLength(191);
+    }
 
 # error: 
 - Call to undefined function App\Http\Controllers\str_slug()
