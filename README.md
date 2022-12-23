@@ -64,7 +64,6 @@ Repository for laravel applications:
 - edit app/providers/AppServiceProvider.php
 - public function boot()
 -    {
--        //
 -        Schema::defaultStringLength(191);
 -    }
 
