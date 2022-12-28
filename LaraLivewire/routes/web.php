@@ -23,6 +23,6 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])-
         return view('dashboard');
     })->name('dashboard');
 
-    Route::resource('reference', ReferenceController::class);
+    Route::resource('reference', ReferenceController::class)->middleware('translate');
    
 });

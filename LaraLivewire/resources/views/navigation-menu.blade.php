@@ -13,11 +13,11 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('menu.dashboard') }}
                     </x-jet-nav-link>
 
                     <x-jet-nav-link href="{{ route('reference.index') }}" :active="request()->routeIs('reference*')">
-                        {{ __('Reference') }}
+                        {{ __('menu.ref') }}
                     </x-jet-nav-link>
                 </div>
             </div>
@@ -97,11 +97,11 @@
                         <x-slot name="content">
                             <!-- Account Management -->
                             <div class="block px-4 py-2 text-xs text-gray-400">
-                                {{ __('Manage Account') }}
+                                {{ __('menu.manage_account') }}
                             </div>
 
                             <x-jet-dropdown-link href="{{ route('profile.show') }}">
-                                {{ __('Profile') }}
+                                {{ __('menu.profile') }}
                             </x-jet-dropdown-link>
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -118,7 +118,7 @@
 
                                 <x-jet-dropdown-link href="{{ route('logout') }}"
                                          @click.prevent="$root.submit();">
-                                    {{ __('Log Out') }}
+                                    {{ __('menu.logout') }}
                                 </x-jet-dropdown-link>
                             </form>
                         </x-slot>

@@ -3,6 +3,7 @@
 
 # spesification
 - laravel 9.4.0
+- multilanguage
 
 # step by step
 - composer require laravel/jetstream
