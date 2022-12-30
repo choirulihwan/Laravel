@@ -65,12 +65,13 @@ export default {
     mounted() {
         if (this.isOpen) {
             this.focusInput();
+            this.$page.props.errors = {}
         }
         if(!this.isEdit) {
             this.form.id_ref = null;
             this.form.no_ref = null;
             this.form.keterangan = null;
-            this.form.keterangan2 = null;
+            this.form.keterangan2 = null;            
         }
     },
 

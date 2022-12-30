@@ -1,8 +1,12 @@
 <?php
 
+use App\Models\User;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\ReferenceController;
 
 /*
@@ -30,5 +34,10 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
         return Inertia::render('Dashboard');
     })->name('dashboard');
 
-    Route::resource('reference', ReferenceController::class);
+    Route::resource('reference', ReferenceController::class)->middleware('translate');    
+    Route::put('/setting', [SettingController::class, 'update'])->name('setting.update');
+
+    // Spatie
+    Route::resource('roles', RoleController::class);
+    Route::resource('users', UserController::class);
 });

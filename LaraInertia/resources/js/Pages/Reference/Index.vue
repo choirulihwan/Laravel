@@ -6,8 +6,8 @@ import AppLayout from '@/Layouts/AppLayout.vue';
   <AppLayout title="Dashboard">
     <template #header>
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        Reference
-      </h2>
+        {{ $t('Reference') }}
+      </h2>      
     </template>
 
     <div class="py-3" v-if="$page.props.flash.message">
@@ -41,10 +41,15 @@ export default {
     }    
   },
 
+  methods: {    
+  },
+
   components: {
     RefList,
     AlertMessage
-  }
+  }, 
+
+  
 }
 
 </script>
