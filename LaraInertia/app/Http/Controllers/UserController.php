@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use Spatie\Permission\Models\Role;
-
-use Illuminate\Http\Request;
-use Hash;
-use Illuminate\Support\Arr;
 use DB;
+use Hash;
+
+use App\Models\User;
+use Inertia\Inertia;
+use Illuminate\Support\Arr;
+use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -27,8 +28,15 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $data = User::orderBy('id','DESC')->paginate(5);
-        return view('users.index',compact('data'))->with('i', ($request->input('page', 1) - 1) * 5);
+        $data = User::orderBy('id','DESC')->get();  
+        foreach($data as $v):
+            $user_role[$v->id] = $v->getRoleNames();
+        endforeach;
+        
+        return Inertia::render('User/Index', [
+            'users'  => $data, 
+            'user_role'  => $user_role        
+        ]);
     }
 
     /**
@@ -38,8 +46,11 @@ class UserController extends Controller
      */
     public function create()
     {
-        $roles = Role::pluck('name','name')->all();
-        return view('users.create',compact('roles'));
+        // $roles = Role::pluck('name','name')->all();
+        $roles = Role::all();
+        return Inertia::render('User/Create', [
+            'roles'  => $roles,            
+        ]); 
     }
 
     /**
@@ -53,30 +64,20 @@ class UserController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|same:confirm-password',
+            // 'password' => 'required|same:confirm-password',
             'roles' => 'required'
         ]);
 
         $input = $request->all();
-        $input['password'] = Hash::make($input['password']);
+        // $input['password'] = Hash::make($input['password']);
+        $input['password'] = Hash::make('password');
     
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
     
-        return redirect()->route('users.index')->with('success','User created successfully');
+        return redirect()->route('users.index')->with('message','User created successfully');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $user = User::find($id);
-        return view('users.show',compact('user'));
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -87,10 +88,19 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        $roles = Role::pluck('name','name')->all();
-        $userRole = $user->roles->pluck('name','name')->all();
+        // $roles = Role::pluck('name','name')->all();
+        $roles = Role::all();
+        // $userRole = $user->roles->pluck('id','id')->all();
+        $userRole = $user->roles[0]->id;
+        // dd($user->roles[0]->id);
     
-        return view('users.edit',compact('user','roles','userRole'));
+        // return view('users.edit',compact('user','roles','userRole'));
+        return Inertia::render('User/Create', [
+            'user'  => $user,
+            'roles' => $roles,                        
+            'user_role' => $userRole,
+            'isEdit'    => true
+        ]);       
     }
 
     /**

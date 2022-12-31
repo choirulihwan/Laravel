@@ -79,9 +79,14 @@ const logout = () => {
                                         <DropdownLink :href="route('roles.index')">
                                             {{ $t('Roles') }}
                                         </DropdownLink>
+                                        <DropdownLink :href="route('users.index')">
+                                            {{ $t('Users') }}
+                                        </DropdownLink>
                                         <div class="border-t border-gray-100" />                            
                                         
-                                        <DropdownLink :href="route('reference.index')">{{ $t('Reference') }}</DropdownLink>
+                                        <DropdownLink :href="route('reference.index')">
+                                            {{ $t('Reference') }}
+                                        </DropdownLink>
                                         <div class="border-t border-gray-100" />                                        
                                     </template>
                                 </Dropdown>
