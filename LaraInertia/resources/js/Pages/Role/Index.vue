@@ -28,15 +28,11 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                 <div class="py-4 inline-block w-full sm:px-6 lg:px-8">
                     <div class="overflow-hidden">
                         <div class="flex justify-end">
-                          
-
-                              <SuccessButton class="mb-2">   
-                                <!-- <template #default>{{ $t('Create') }}</template>                              -->
-                                  <NavLinkButton :href="route('roles.create')">
-                                      <template #default>{{ $t('Create') }}</template>
-                                  </NavLinkButton>
-                              </SuccessButton>
-                          
+                          <SuccessButton class="mb-2" v-if="$page.props.user_permission.includes('role-create')">   
+                              <NavLinkButton :href="route('roles.create')">
+                                  <template #default>{{ $t('Create') }}</template>
+                              </NavLinkButton>
+                          </SuccessButton>
                         </div>
 
                         <table class="w-full text-center border">
@@ -54,12 +50,12 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                                     <td class="text-sm text-gray-900 font-light px-3 py-2 whitespace-nowrap border-r">{{ item.name }}</td>
                                     <td class="text-sm text-gray-900 font-light px-3 py-2 whitespace-nowrap border-r">{{ item.guard_name }}</td>                                    
                                     <td class="text-sm text-gray-900 font-light px-3 py-2 whitespace-nowrap">
-                                        <WarningButton class="mx-2">                                            
+                                        <WarningButton class="mx-2" v-if="$page.props.user_permission.includes('role-create')">                                            
                                             <NavLinkButton :href="route('roles.edit', item.id)">
                                                 <template #default>{{ $t('Edit') }}</template>
                                             </NavLinkButton>
                                         </WarningButton>                                        
-                                        <DangerButton @click="confirmDelete(item)">
+                                        <DangerButton @click="confirmDelete(item)" v-if="$page.props.user_permission.includes('role-delete')">
                                             <template #default>{{ $t('Delete') }}</template>
                                         </DangerButton>
                                     </td>

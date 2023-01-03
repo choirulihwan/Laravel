@@ -5,7 +5,7 @@
                 <div class="py-4 inline-block w-full sm:px-6 lg:px-8">
                     <div class="overflow-hidden">
                         <div class="flex justify-end">
-                            <SuccessButton @click="openForm()" class="mb-2">
+                            <SuccessButton @click="openForm()" class="mb-2" v-if="$page.props.user_permission.includes('ref-create')"> 
                                 <template #default>{{ $t('Create') }}</template>
                             </SuccessButton>
                         </div>
@@ -38,11 +38,11 @@
                                         class="text-sm text-gray-900 font-light px-3 py-2 whitespace-nowrap text-left border-r">
                                         {{ item.keterangan2 }}</td>
                                     <td class="text-sm text-gray-900 font-light px-3 py-2 whitespace-nowrap">
-                                        <WarningButton class="mx-2" @click="openForm(item)">
+                                        <WarningButton class="mx-2" @click="openForm(item)" v-if="$page.props.user_permission.includes('ref-edit')">
                                             <template #default>Edit</template>
                                         </WarningButton>
                                         <!-- onclick="return confirm('Are you sure?') || event.stopImmediatePropagation()"  -->
-                                        <DangerButton @click="confirmDelete(item)">
+                                        <DangerButton @click="confirmDelete(item)" v-if="$page.props.user_permission.includes('ref-delete')">
                                             <template #default>{{ $t('Delete') }}</template>
                                         </DangerButton>
                                     </td>

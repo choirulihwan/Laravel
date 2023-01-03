@@ -24,7 +24,7 @@ import AppLayout from '@/Layouts/AppLayout.vue';
               <div class="col-span-4">
                 <input type="text" placeholder="Input data..." v-model="form.name" ref="name"
                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                <InputError :message="$page.props.errors.id_ref"></InputError>
+                <InputError :message="$page.props.errors.name"></InputError>
               </div>
             </div>
 
@@ -33,9 +33,8 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                 <label class="block text-sm font-medium text-gray-700">{{ $t('Guard Name') }}</label>
               </div>
               <div class="col-span-4">
-                <input type="text" placeholder="Input data.." v-model="form.guard_name"
-                  class="mt-1 mb-4 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                <InputError :message="$page.props.errors.no_ref"></InputError>
+                <input type="text" disabled placeholder="Input data.." v-model="form.guard_name"
+                  class="mt-1 mb-4 block w-full rounded-md bg-gray-100 border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">                
               </div>
             </div>
 
@@ -48,7 +47,9 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                   <input type="checkbox" :value="item.id" :name="item.id" v-model="form.rolepermission"
                     class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                   <label :for="item.id" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ item.name }}</label>
+                  
                 </div>
+                <InputError :message="$page.props.errors.rolepermission"></InputError>
               </div>
             </div>
           </div>

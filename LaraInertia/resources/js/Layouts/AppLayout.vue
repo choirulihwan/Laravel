@@ -76,15 +76,15 @@ const logout = () => {
                                     </template>
 
                                     <template #content>           
-                                        <DropdownLink :href="route('roles.index')">
+                                        <DropdownLink :href="route('roles.index')" v-if="$page.props.user_permission.includes('role-list')">
                                             {{ $t('Roles') }}
                                         </DropdownLink>
-                                        <DropdownLink :href="route('users.index')">
+                                        <DropdownLink :href="route('users.index')" v-if="$page.props.user_permission.includes('user-list')">
                                             {{ $t('Users') }}
                                         </DropdownLink>
                                         <div class="border-t border-gray-100" />                            
                                         
-                                        <DropdownLink :href="route('reference.index')">
+                                        <DropdownLink :href="route('reference.index')" v-if="$page.props.user_permission.includes('ref-list')">
                                             {{ $t('Reference') }}
                                         </DropdownLink>
                                         <div class="border-t border-gray-100" />                                        
@@ -251,9 +251,15 @@ const logout = () => {
                 <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
                     <div class="pt-2 pb-3 space-y-1">
                         <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                            {{ $t('Dashboard') }}
+                            {{ $t('Dashboard') }}                            
                         </ResponsiveNavLink>
-                        <ResponsiveNavLink :href="route('reference.index')" :active="route().current('reference*')">
+                        <ResponsiveNavLink :href="route('roles.index')" :active="route().current('user*')" v-if="$page.props.user_permission.includes('role-list')">
+                            {{ $t('Roles') }} 
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink :href="route('users.index')" :active="route().current('user*')" v-if="$page.props.user_permission.includes('user-list')">
+                            {{ $t('Users') }} 
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink :href="route('reference.index')" :active="route().current('reference*')" v-if="$page.props.user_permission.includes('ref-list')">
                             {{ $t('Reference') }} 
                         </ResponsiveNavLink>
                     </div>

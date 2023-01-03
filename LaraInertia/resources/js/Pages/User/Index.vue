@@ -28,7 +28,7 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                   <div class="overflow-hidden">
                     <div class="flex justify-end">
 
-                      <SuccessButton class="mb-2">                        
+                      <SuccessButton class="mb-2" v-if="$page.props.user_permission.includes('user-create')">                        
                         <NavLinkButton :href="route('users.create')">
                           <template #default>{{ $t('Create') }}</template>
                         </NavLinkButton>
@@ -58,12 +58,12 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                             <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800">{{ user_role[item.id][0] }}</span>
                           </td>
                           <td class="text-sm text-gray-900 font-light px-3 py-2 whitespace-nowrap">
-                            <WarningButton class="mx-2">
+                            <WarningButton class="mx-2" v-if="$page.props.user_permission.includes('user-edit')">
                               <NavLinkButton :href="route('users.edit', item.id)">
                                 <template #default>{{ $t('Edit') }}</template>
                               </NavLinkButton>
                             </WarningButton>
-                            <DangerButton @click="confirmDelete(item)">
+                            <DangerButton @click="confirmDelete(item)" v-if="$page.props.user_permission.includes('user-delete')">
                               <template #default>{{ $t('Delete') }}</template>
                             </DangerButton>
                           </td>
@@ -108,7 +108,8 @@ import DangerButton from '@/Components/DangerButton.vue'
 import SecondaryButton from '@/Components/SecondaryButton.vue'
 import ConfirmationModal from '@/Components/ConfirmationModal.vue'
 
-export default {
+export default { 
+
   props: ['users', 'user_role'],
 
   data() {
@@ -120,17 +121,14 @@ export default {
   },
 
   mounted() {
-    // console.log(this.user_role)
+    // console.log(this.$page.props.user_permission)
   },
 
   components: {
     AlertMessage
   },
 
-  methods: {
-    // openForm() {
-    //   location.href='/roles/create'
-    // },
+  methods: {    
 
     confirmDelete(item) {
       this.isConfirm = true
@@ -142,7 +140,7 @@ export default {
     },
 
     deleteItem(item) {
-      this.$inertia.post('/roles/' + item.id, {
+      this.$inertia.post('/users/' + item.id, {
         _method: 'DELETE'
       })
       this.closeConfirmation()

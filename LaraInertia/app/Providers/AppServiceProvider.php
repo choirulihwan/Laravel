@@ -5,6 +5,7 @@ namespace App\Providers;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\ServiceProvider;
+use Auth;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,6 +26,19 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
+        Inertia::share([
+            'user_permission' => function () {
+                $permissions = [];
+                if (Auth::check()):
+                    $col_permissions = auth()->user()->getAllPermissions();
+                    $permissions = $col_permissions->map(function ($item, $key) {
+                        return $item->name;
+                    });    
+                endif;            
+                return $permissions;
+            }
+        ]);
 
         Inertia::share([
             'errors' => function () {

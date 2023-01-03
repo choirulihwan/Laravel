@@ -31,8 +31,8 @@ class UserController extends Controller
         $data = User::orderBy('id','DESC')->get();  
         foreach($data as $v):
             $user_role[$v->id] = $v->getRoleNames();
-        endforeach;
-        
+        endforeach;       
+
         return Inertia::render('User/Index', [
             'users'  => $data, 
             'user_role'  => $user_role        
@@ -92,9 +92,7 @@ class UserController extends Controller
         $roles = Role::all();
         // $userRole = $user->roles->pluck('id','id')->all();
         $userRole = $user->roles[0]->id;
-        // dd($user->roles[0]->id);
-    
-        // return view('users.edit',compact('user','roles','userRole'));
+        
         return Inertia::render('User/Create', [
             'user'  => $user,
             'roles' => $roles,                        
@@ -132,7 +130,7 @@ class UserController extends Controller
     
         $user->assignRole($request->input('roles'));
     
-        return redirect()->route('users.index')->with('success','User updated successfully');
+        return redirect()->route('users.index')->with('message','User updated successfully');
     }
 
     /**
@@ -144,6 +142,6 @@ class UserController extends Controller
     public function destroy($id)
     {
         User::find($id)->delete();
-        return redirect()->route('users.index')->with('success','User deleted successfully');
+        return redirect()->route('users.index')->with('message','User deleted successfully');
     }
 }

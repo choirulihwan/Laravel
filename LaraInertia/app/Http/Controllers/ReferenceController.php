@@ -8,6 +8,14 @@ use Illuminate\Http\Request;
 
 class ReferenceController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:ref-list|ref-create|ref-edit|ref-delete', ['only' => ['index','store']]);
+        $this->middleware('permission:ref-create', ['only' => ['create','store']]);
+        $this->middleware('permission:ref-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:ref-delete', ['only' => ['destroy']]);
+    }
+    
     /**
      * Display a listing of the resource.
      *
