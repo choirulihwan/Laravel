@@ -1,8 +1,10 @@
 <?php
 return [
 	"dashboard" => "Beranda",	
-	"ref" => "Referensi",	
+	"ref"       => "Referensi",	
     'profile'   => 'Profil',
     'logout'    => 'Keluar',
-    "manage_account"    => 'Pengaturan Akun'
+    "manage_account"    => 'Pengaturan Akun',
+    "roles"     => 'Group',
+    "users"     => 'Pengguna',
 ];

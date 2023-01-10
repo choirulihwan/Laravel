@@ -42,6 +42,12 @@
     use Spatie\Permission\Traits\HasRoles;
     use HasRoles;
 - php artisan db:seed --class=CreateAdminUserSeeder
+- databaseseeder.php
+    $this->call([
+            PermissionTableSeeder::class,
+            CreateAdminUserSeeder::class,            
+        ]);
+- php artisan migrate:fresh --seed
 
 
 [TODO]

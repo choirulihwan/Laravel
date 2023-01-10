@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Ref;
 
 use Livewire\Component;
 use App\Models\Reference;
 
-class ListReference extends Component
+class Table extends Component
 {
     protected $listeners = [
         'ref-created' => '$refresh'
@@ -13,7 +13,7 @@ class ListReference extends Component
 
     public function render()
     {
-        return view('livewire.list-reference', [
+        return view('livewire.ref.table', [
             'refs'  => Reference::latest()->get()
         ]);
     }
@@ -27,5 +27,7 @@ class ListReference extends Component
     {
         $ref = Reference::find($id);
         $ref->delete();
+        
+        $this->emit('ref-delete');
     }
 }

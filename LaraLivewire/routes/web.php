@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ReferenceController;
 
 /*
@@ -24,5 +26,9 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])-
     })->name('dashboard');
 
     Route::resource('reference', ReferenceController::class)->middleware('translate');
+    
+    // Spatie
+    Route::resource('roles', RoleController::class);
+    Route::resource('users', UserController::class);
    
 });

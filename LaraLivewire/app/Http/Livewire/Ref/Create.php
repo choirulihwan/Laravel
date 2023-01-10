@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Ref;
 
 use Livewire\Component;
 use App\Models\Reference;
 
-
-class CreateReference extends Component
+class Create extends Component
 {
-    
     public $id_ref;
     public $no_ref;
     public $keterangan;
@@ -17,16 +15,25 @@ class CreateReference extends Component
     public $refs;
 
     protected $listeners = [
-        'ref-edit' => 'edit'
+        'ref-edit' => 'edit',
+        'ref-delete'    => 'delete'
+    ];
+
+    protected $rules = [
+        'id_ref' => 'required|size:3',
+        'no_ref' => 'required',
+        'keterangan'    => 'required'
     ];
 
     public function render()
     {
-        return view('livewire.create-reference');
+        return view('livewire.ref.create');
     }
 
     public function store() 
     {        
+        $this->validate();
+
         Reference::create([
             'id_ref' => $this->id_ref,
             'no_ref' => $this->no_ref,
@@ -35,6 +42,8 @@ class CreateReference extends Component
         ]);        
 
         $this->reset_input();
+
+        session()->flash('message', 'Reference inserted.');
     }
 
     public function edit($id)
@@ -49,6 +58,9 @@ class CreateReference extends Component
     }
 
     public function update($id) {
+        
+        $this->validate();
+
         $ref = Reference::find($id);
         $ref->id_ref = $this->id_ref;
         $ref->no_ref = $this->no_ref;
@@ -57,6 +69,11 @@ class CreateReference extends Component
         $ref->save();   
         
         $this->reset_input();
+        session()->flash('message', 'Reference updated.');
+    }
+
+    public function delete() {
+        session()->flash('message', 'Reference deleted.');
     }
 
     public function reset_input() 

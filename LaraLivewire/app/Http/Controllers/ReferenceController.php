@@ -7,6 +7,15 @@ use Illuminate\Http\Request;
 
 class ReferenceController extends Controller
 {
+    
+    function __construct()
+    {
+         $this->middleware('permission:ref-list|ref-create|ref-edit|ref-delete', ['only' => ['index','store']]);
+         $this->middleware('permission:ref-create', ['only' => ['create','store']]);
+         $this->middleware('permission:ref-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:ref-delete', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,9 +23,7 @@ class ReferenceController extends Controller
      */
     public function index()
     {        
-        return view('reference.index', [
-            'refs' => Reference::all()
-        ]);
+        return view('reference.index');
     }
 
     /**
@@ -24,10 +31,10 @@ class ReferenceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return view('reference.create');
-    }
+    // public function create()
+    // {
+    //     return view('reference.create');
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -35,20 +42,20 @@ class ReferenceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $validatedData = $request->validate([       
-            'id_ref'            => 'required|size:3',
-            'no_ref'            => 'required',
-            'keterangan'        => 'required'         
-        ]);
+    // public function store(Request $request)
+    // {
+    //     $validatedData = $request->validate([       
+    //         'id_ref'            => 'required|size:3',
+    //         'no_ref'            => 'required',
+    //         'keterangan'        => 'required'         
+    //     ]);
 
-        $validatedData['keterangan2'] = $request->keterangan2;        
+    //     $validatedData['keterangan2'] = $request->keterangan2;        
 
-        Referensi::create($validatedData);
+    //     Referensi::create($validatedData);
 
-        return redirect('/dashboard/referensi')->with('success', 'Referensi berhasil ditambahkan');
-    }
+    //     return redirect('/dashboard/referensi')->with('success', 'Referensi berhasil ditambahkan');
+    // }
 
     /**
      * Display the specified resource.
@@ -56,10 +63,10 @@ class ReferenceController extends Controller
      * @param  \App\Models\Referensi  $referensi
      * @return \Illuminate\Http\Response
      */
-    public function show(Referensi $referensi)
-    {
-        //
-    }
+    // public function show(Referensi $referensi)
+    // {
+    //     //
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -67,12 +74,12 @@ class ReferenceController extends Controller
      * @param  \App\Models\Referensi  $referensi
      * @return \Illuminate\Http\Response
      */
-    public function edit(Referensi $referensi)
-    {
-        return view('dashboard.referensi.edit', [
-            'ref'          => $referensi,            
-        ]);
-    }
+    // public function edit(Referensi $referensi)
+    // {
+    //     return view('dashboard.referensi.edit', [
+    //         'ref'          => $referensi,            
+    //     ]);
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -81,21 +88,21 @@ class ReferenceController extends Controller
      * @param  \App\Models\Referensi  $referensi
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Referensi $referensi)
-    {
-        $validatedData = $request->validate([       
-            'id_ref'            => 'required|size:3',
-            'no_ref'            => 'required',
-            'keterangan'        => 'required'         
-        ]);
+    // public function update(Request $request, Referensi $referensi)
+    // {
+    //     $validatedData = $request->validate([       
+    //         'id_ref'            => 'required|size:3',
+    //         'no_ref'            => 'required',
+    //         'keterangan'        => 'required'         
+    //     ]);
 
-        $validatedData['keterangan2'] = $request->keterangan2;     
+    //     $validatedData['keterangan2'] = $request->keterangan2;     
 
-        Referensi::where('id', $referensi->id)
-                ->update($validatedData);
+    //     Referensi::where('id', $referensi->id)
+    //             ->update($validatedData);
 
-        return redirect('/dashboard/referensi')->with('success', 'Referensi berhasil diupdate');
-    }
+    //     return redirect('/dashboard/referensi')->with('success', 'Referensi berhasil diupdate');
+    // }
 
     /**
      * Remove the specified resource from storage.
@@ -103,9 +110,9 @@ class ReferenceController extends Controller
      * @param  \App\Models\Referensi  $referensi
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Referensi $referensi)
-    {
-        Referensi::destroy($referensi->id);
-        return redirect('/dashboard/referensi')->with('success', 'Post has been deleted');
-    }
+    // public function destroy(Referensi $referensi)
+    // {
+    //     Referensi::destroy($referensi->id);
+    //     return redirect('/dashboard/referensi')->with('success', 'Post has been deleted');
+    // }
 }

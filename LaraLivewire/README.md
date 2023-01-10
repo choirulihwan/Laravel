@@ -6,6 +6,7 @@
 - multilanguage
 
 # step by step
+- laravel new [nama_project]
 - composer require laravel/jetstream
 - php artisan jetstream:install livewire
 - npm install
@@ -21,3 +22,4 @@
 # catatan
 - membuat komponen
     php artisan make:livewire [nama_component]
+    php artisan make:livewire Post/Show
