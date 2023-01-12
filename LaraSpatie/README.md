@@ -1,5 +1,5 @@
 # description
-- Laravel project with simple authentication and authorization using user, group, menu, module, group_menu and group module using spatie
+- Laravel project with simple authentication and authorization using user, role, module, permission using spatie
 
 # technology
 - laravel 8

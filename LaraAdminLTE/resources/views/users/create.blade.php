@@ -3,7 +3,7 @@
 @section('title', 'Create User')
 
 @section('content_header')
-    <h1>User Management</h1>
+    <h1>{{ __('user.user') }}</h1>
 @stop
 
 @section('content')
@@ -27,12 +27,12 @@
 
 <div class="card card-info">
     <div class="card-header">
-        <h3 class="card-title">{{ $title }} user</h3>
+        <h3 class="card-title">{{ __('global.'.$mode) }} {{ __('user.user') }}</h3>
     </div>
 
     <div class="card-body">
         <div class="form-group row">
-            <label for="name" class="col-sm-2 col-form-label">Name</label>
+            <label for="name" class="col-sm-2 col-form-label">{{ __('user.name') }}</label>
             <div class="col-sm-10">
                 {!! Form::text('name', ($mode == 'edit') ? $user->name : old('name'), array('placeholder' => 'Name','class' => 'form-control', 'autofocus'=>'autofocus')) !!}
             </div>
@@ -45,7 +45,7 @@
             </div>
         </div>
 
-        <div class="form-group row">
+        {{-- <div class="form-group row">
             <label for="name" class="col-sm-2 col-form-label">Password</label>
             <div class="col-sm-10">
                 {!! Form::password('password', array('placeholder' => 'Password','class' => 'form-control')) !!}
@@ -53,14 +53,14 @@
         </div>
 
         <div class="form-group row">
-            <label for="confirm-password" class="col-sm-2 col-form-label">Confirm Password</label>
+            <label for="confirm-password" class="col-sm-2 col-form-label">{{ __('user.confirm_pass') }}</label>
             <div class="col-sm-10">
                 {!! Form::password('confirm-password', array('placeholder' => 'Confirm Password','class' => 'form-control')) !!}
             </div>
-        </div>
+        </div> --}}
 
         <div class="form-group row">
-            <label for="roles" class="col-sm-2 col-form-label">Role</label>
+            <label for="roles" class="col-sm-2 col-form-label">{{ __('user.role') }}</label>
             <div class="col-sm-10">
                 {!! Form::select('roles[]', $roles, ($mode == 'edit') ? $userRole : old('roles'),  array('class' => 'form-control','multiple')) !!}
             </div>    
@@ -68,8 +68,8 @@
     </div>
     
     <div class="card-footer">
-        <button type="submit" class="btn btn-primary"><i class="fas fa-fw fa-save"></i> Submit</button>
-        <a class="btn btn-secondary float-right" href="{{ route('users.index') }}"><i class="fas fa-fw fa-minus-circle"></i> Cancel</a>
+        <button type="submit" class="btn btn-primary"><i class="fas fa-fw fa-save"></i> {{ __('global.save') }}</button>
+        <a class="btn btn-secondary float-right" href="{{ route('users.index') }}"><i class="fas fa-fw fa-minus-circle"></i> {{ __('global.cancel') }}</a>
     </div>
 </div>
 {!! Form::close() !!}

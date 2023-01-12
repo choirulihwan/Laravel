@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReferensiController;
 use App\Http\Controllers\PermissionController;
 
 /*
@@ -28,8 +29,10 @@ Auth::routes();
 
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles', RoleController::class);
-    Route::resource('users', UserController::class);   
+    Route::resource('users', UserController::class);     
     Route::put('/users/reset/{user:id}', [UserController::class, 'reset'])->name('users.reset');
+
+    Route::resource('refs', ReferensiController::class);   
 
     Route::resource('permissions', PermissionController::class);    
 

@@ -57,17 +57,18 @@ class UserController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|same:confirm-password',
+            // 'password' => 'required|same:confirm-password',
             'roles' => 'required'
         ]);
 
         $input = $request->all();
-        $input['password'] = Hash::make($input['password']);
+        // $input['password'] = Hash::make($input['password']);
+        $input['password'] = Hash::make('password');
     
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
     
-        return redirect()->route('users.index')->with('success','User created successfully');
+        return redirect()->route('users.index')->with('success','insert_success');
     }
 
     /**
@@ -111,16 +112,16 @@ class UserController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users,email,'.$id,
-            'password' => 'same:confirm-password',
+            // 'password' => 'same:confirm-password',
             'roles' => 'required'
         ]);
     
         $input = $request->all();
-        if(!empty($input['password'])) { 
-            $input['password'] = Hash::make($input['password']);
-        } else {
-            $input = Arr::except($input,array('password'));    
-        }
+        // if(!empty($input['password'])) { 
+        //     $input['password'] = Hash::make($input['password']);
+        // } else {
+        //     $input = Arr::except($input,array('password'));    
+        // }
     
         $user = User::find($id);
         $user->update($input);
@@ -128,7 +129,7 @@ class UserController extends Controller
     
         $user->assignRole($request->input('roles'));
     
-        return redirect()->route('users.index')->with('success','User updated successfully');
+        return redirect()->route('users.index')->with('success','update_success');
     }
 
     /**
@@ -140,7 +141,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         User::find($id)->delete();
-        return redirect()->route('users.index')->with('success','User deleted successfully');
+        return redirect()->route('users.index')->with('success','delete_success');
     }
 
     public function reset($id)
@@ -148,6 +149,6 @@ class UserController extends Controller
         $user = User::find($id);
         $input['password'] = Hash::make('password');
         $user->update($input);
-        return redirect()->route('users.index')->with('success','User password set to default (password) successfully');
+        return redirect()->route('users.index')->with('success','reset_success');
     }
 }

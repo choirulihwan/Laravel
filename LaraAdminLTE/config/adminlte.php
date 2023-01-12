@@ -333,28 +333,28 @@ return [
         //     'icon' => 'fas fa-fw fa-lock',
         // ],
         [
-            'text'    => 'System',
+            'text'    => 'system',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
                 [
-                    'text' => 'User',
+                    'text' => 'user',
                     'url'  => 'users',
                     'icon'    => 'fas fa-fw fa-user-plus',
                     'active' => ['users*']
                 ],
                 [
-                    'text' => 'Roles',
+                    'text' => 'roles',
                     'url'  => 'roles',
                     'icon'  => 'fas fa-fw fa-users',
                     'active' => ['roles*'],
                     'can'    => 'role-list',
                 ],
                 [
-                    'text' => 'Permissions',
-                    'url'  => 'permissions',
+                    'text' => 'references',
+                    'url'  => 'refs',
                     'icon'  => 'fas fa-fw fa-flask',
-                    'active' => ['permissions*'],
-                    'can'    => 'permission-list',
+                    'active' => ['refs*'],
+                    'can'    => 'ref-list',
                 ],
                 // [
                 //     'text'    => 'level_one',

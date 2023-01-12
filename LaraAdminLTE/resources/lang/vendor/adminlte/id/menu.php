@@ -16,4 +16,8 @@ return [
     'important'                     => 'Penting',
     'warning'                       => 'Peringatan',
     'information'                   => 'Informasi',
+    'system'                        => 'Sistem',
+    'user'                          => 'Pengguna',
+    'roles'                         => 'Group',
+    'references'                    => 'Referensi',    
 ];

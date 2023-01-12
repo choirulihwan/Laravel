@@ -5,13 +5,28 @@
 @section('plugins.Datatables', true)
 
 @section('content_header')
-    <h1>Users Management</h1>
+    <h1>{{ __('user.user') }}</h1>
 @stop
 
 @section('js')
     <script> 
       $(document).ready( function () {
-        $('#myTable').DataTable();
+        $('#myTable').DataTable({
+          language: {
+              url: "{{ __('global.url_datatables') }}"
+          }
+        });
+
+        $('#btnDel').on('click', function() {
+          var message = "{{ __('global.confirm_delete') }}";
+          return confirm(message);
+        });
+
+        $('#btnReset').on('click', function() {
+          var message = "{{ __('user.confirm_reset') }}";
+          return confirm(message);
+        });
+
       });
     </script>
 @stop
@@ -22,7 +37,7 @@
         
         @if ($message = Session::get('success'))          
           <x-adminlte-alert theme="success" title="Success" dismissable>
-            {{ $message }}
+            {{ __('global.'.$message) }}
           </x-adminlte-alert>
         @endif
         
@@ -32,11 +47,12 @@
             <div class="card">
               <div class="card-header">
                 
-                  <h3 class="card-title col-md-8">List Users</h3>
+                  <h3 class="card-title col-md-8">{{ __('global.list') }} {{ __('user.user') }}</h3>
                 
                 @can('user-create')
                   <div class="d-flex col-md-4 justify-content-end">
-                    <a class="btn btn-success" href="{{ route('users.create') }}"><i class="fas fa-fw fa-plus"></i> Create</a>
+                    <a class="btn btn-success mr-1" href="{{ route('users.create') }}"><i class="fas fa-fw fa-plus"></i> {{ __('global.create') }}</a>
+                    <a class="btn btn-secondary" href="{{ route('home') }}"><i class="fa fa-fw fa-home"></i> {{ __('global.back') }} </a>
                   </div>
                 @endcan
               </div>
@@ -48,11 +64,11 @@
                 <thead>
                   <tr class="table-primary">
                     <th>No</th>
-                    <th>Name</th>
+                    <th>{{ __('user.name') }}</th>
                     <th>Email</th>
-                    <th>Roles</th>
+                    <th>{{ __('user.role') }}</th>
                     @can('user-edit', 'user-delete')
-                      <th width="280px">Action</th>
+                      <th width="280px">{{ __('global.action') }}</th>
                     @endcan
                   </tr>
               </thead>
@@ -75,7 +91,7 @@
                     {{-- <a class="btn btn-info" href="{{ route('users.show',$user->id) }}"><i class="fas fa-fw fa-eye"></i> Show</a> --}}
                     @can('user-reset')
                       {!! Form::open(['method' => 'PUT','route' => ['users.reset', $user->id],'style'=>'display:inline']) !!}                          
-                          {{ Form::button('<i class="fas fa-fw fa-share-square"></i>', ['type' => 'submit', 'class' => 'btn btn-primary', 'onclick' => "return confirm('Are you sure?')"] )  }}
+                          {{ Form::button('<i class="fas fa-fw fa-share-square"></i>', ['type' => 'submit', 'class' => 'btn btn-primary', 'id' => 'btnReset', "title" => "Reset password"] )  }}
                       {!! Form::close() !!}
                     @endcan
                     @can('user-edit')
@@ -84,7 +100,7 @@
                     @can('user-delete')
                       {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
                           {{-- {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!} --}}
-                          {{ Form::button('<i class="fas fa-fw fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger', 'onclick' => "return confirm('Are you sure?')"] )  }}
+                          {{ Form::button('<i class="fas fa-fw fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger', 'id' => 'btnDel'] )  }}
                       {!! Form::close() !!}
                     @endcan
                   </td>
