@@ -1,9 +1,14 @@
 # Description
 - Laravel with jetstream/inertia
 
+# How to run
+- php artisan serve
+- npm run dev
+
 # features
 - multilanguage
 - authorization with spatie
+- laravel api
 
 # spesification
 - Laravel Framework 9.45.1
@@ -49,5 +54,8 @@
         ]);
 - php artisan migrate:fresh --seed
 
+# step by step api
+- php artisan make:resource [nama_resource]
+- php artisan make:controller Api/PostController
 
 [TODO]

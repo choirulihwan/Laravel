@@ -18,7 +18,7 @@ class CreateReferencesTable extends Migration
             $table->char('id_ref', 3);
             $table->string('no_ref');
             $table->string('keterangan');
-            $table->string('keterangan2');            
+            $table->string('keterangan2')->nullable();            
             $table->timestamps();
         });
     }
