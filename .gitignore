@@ -24,3 +24,5 @@ Homestead.json
 .phpunit.result.cache
 Blog/docker-compose/mysql/
 CompanyProfile/docker-compose/mysql/
+MyForum/docker-compose/mysql/
+MyForum/_dump/
