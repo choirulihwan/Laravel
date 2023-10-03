@@ -19,6 +19,10 @@
             'routes/**'
         ])
 
+# run
+- php artisan serve
+- npm run dev
+
 # catatan
 - membuat komponen
     php artisan make:livewire [nama_component]
