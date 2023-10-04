@@ -1,0 +1,66 @@
++ collection adalah tipe data untuk array (array wrapper). Dengan collection kita bisa melakukan banyak operasi
+    tanpa melakukannya secara manual
+
++ create project di laravel
+    - composer create-project laravel/laravel [nama_project]
+    - composer create-project laravel/laravel="9.4.0" [nama_project] / composer create-project laravel/laravel:^9.0 [nama_project]
+    atau 
+    - composer global require laravel/installer (install installer)
+    - laravel new [nama_project]
+
++ install valet (mengakses aplikasi laravel dengan domain .test di local)
+    - composer global require cretueusebiu/valet-windows
+    - valet install
+
++ install clockwork (melihat query yang diload disetiap page)
+    - composer require itsgoingd/clockwork
+
++ start project
+    - php artisan serve
+
++ create controller
+    - php artisan make:controller [nama_controller]
+    - php artisan make:controller [nama_controller] --resource --model=[nama_model]
+
++ create model
+    - php artisan make:model [nama_model]
+    - php artisan make:model -mfs [nama_model] (create model with migration, factory and seeder)
+
++ migrate database
+    - php artisan migrate (up)
+    - php artisan migrate:rollback (down)
+    - php artisan migrate:fresh (down - up) --seed (sekalian ngisi)
+
++ tinker (application interface utk berinteraksi dengan laravel app)
+    - php artisan tinker
+
++ create seeder 
+    - php artisan make:seeder [nama_seeder]
+
++ run seeder
+    - php artisan db:seed
+    - php artisan db:seed --class[nama_seeder]
+
++ factory
+    - php artisan make:factory [PostFactory]
+
++ middleware
+    - php artisan make:middleware [IsAdmin]
+
++ policy
+    - policy memberikan authorization terkait dengan model
+    - php artisan make:policy [nama] -m [model]
+    - register policy di authserviceprovider.php
+
++ permission
+    - composer require spatie/laravel-permission
+    - add in config/app.php 
+        'providers' => [
+                Spatie\Permission\PermissionServiceProvider::class,
+        ],
+    - add in app/Http/kernel.php
+        
+
+
+
+    
