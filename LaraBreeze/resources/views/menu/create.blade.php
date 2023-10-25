@@ -46,7 +46,7 @@
                                             ['id' => 0, 'name' => 'Not Aktif']
                                         ];                                        
                                     @endphp
-                                    <x-select name="is_active" id="is_active" :items="json_encode($arr_active)" :selected="__($menu->is_active)"></x-select>
+                                    <x-select name="is_active" id="is_active" :items="json_encode($arr_active)" :selected="__(isset($menu) ? $menu->is_active : '-')"></x-select>
                                 </div>
                             </div>
 

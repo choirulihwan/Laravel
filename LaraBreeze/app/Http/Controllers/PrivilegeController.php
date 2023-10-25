@@ -66,6 +66,7 @@ class PrivilegeController extends Controller
             'is_edit'   => true,  
             'group' => $group,  
             'menus' => Menu::all()->skip(1)        
+            
         ]);
     }
 

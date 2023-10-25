@@ -74,7 +74,7 @@ class ModuleController extends Controller
     public function edit(Module $module)
     {
         return view('module.create', [
-            'is_edit'   => false,
+            'is_edit'   => true,
             'menu'    => Menu::all(),
             'module'    => $module,
         ]);

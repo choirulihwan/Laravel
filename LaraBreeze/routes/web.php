@@ -7,6 +7,7 @@ use App\Http\Controllers\GroupController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PrivilegeController;
+use App\Http\Controllers\ReferensiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('menu', MenuController::class)->middleware('is-authorized');
     Route::resource('module', ModuleController::class)->middleware('is-authorized');
     Route::resource('privilege', PrivilegeController::class)->middleware('is-authorized');
+    Route::resource('referensi', ReferensiController::class)->middleware('is-authorized');
 });
 
 
