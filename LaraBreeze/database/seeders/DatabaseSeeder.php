@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             ModuleSeeder::class,
             GroupMenuSeeder::class,
             GroupModuleSeeder::class,
+            ReferensiSeeder::class,
         ]);
     }
 }

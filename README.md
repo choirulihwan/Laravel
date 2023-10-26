@@ -32,6 +32,7 @@ Repository for laravel applications:
 - 6. panggil seeder di database/seeds/DatabaseSeeder.php di function run
 - 7. jalankan php artisan migrate
 - 8. jalankan php artisan db:seed
+- 8.1 jalankan php artisan db:seed --class=ReferensiSeeder
 
 # membuat controller di laravel 6
 - 1. buat controller php artisan make:controller <nama_model>Controller --resource

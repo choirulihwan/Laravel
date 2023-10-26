@@ -38,7 +38,11 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('menu', MenuController::class)->middleware('is-authorized');
     Route::resource('module', ModuleController::class)->middleware('is-authorized');
     Route::resource('privilege', PrivilegeController::class)->middleware('is-authorized');
+    
+    Route::get('referensi/importcsv', [ReferensiController::class, 'importcsv'])->name('referensi.importcsv');
+    Route::post('referensi/importcsv', [ReferensiController::class, 'importcsv_action'])->name('referensi.importcsv');
     Route::resource('referensi', ReferensiController::class)->middleware('is-authorized');
+    
 });
 
 

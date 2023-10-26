@@ -7,6 +7,7 @@
 - tailwind css
 - blade templating
 - jquery/datatable
+- maatwebsite/excel (https://docs.laravel-excel.com)
 
 # step by step
 - composer create-project laravel/laravel [project_name]
